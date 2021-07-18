@@ -1,0 +1,9 @@
+{
+  "name": "trello",
+  "version": "1.0.0",
+  "description": "trello",
+  "main": "index.js",
+  "repository": "https://github.com/Yushkevich-A-A/trello.git",
+  "author": "Yushkevich-A-A <Mortifer1993@yandex.ru>",
+  "license": "MIT"
+}
