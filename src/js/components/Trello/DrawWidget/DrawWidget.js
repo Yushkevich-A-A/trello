@@ -1,13 +1,17 @@
 export default class DrawWidget {
   constructor() {
+    this.init()
   }
 
-  drawWidget(data) {
-    console.log(data);
-    this.data = data;
+  init() {
     this.widget = document.createElement('div');
     this.widget.classList.add('widget-task');
     document.body.appendChild(this.widget);
+  }
+
+  drawWidget(data) {
+    this.data = data;
+    this.widget.innerHTML = '';
     this.darwLists();
   }
 
@@ -23,11 +27,23 @@ export default class DrawWidget {
                                   <ul class="list-block">
                                   </ul>
                                 </div>
-                                <div class="add-block">
-                                  Add another card
+                                <div class="block-add-item">
+                                  <div class="add-field disabled">
+                                    <textarea class="textarea-add"></textarea>
+                                    <div class="textarea-buttons">
+                                      <div class="button-submit">
+                                        Add card
+                                      </div>
+                                      <div class="button-cancel"></div>
+                                    </div>
+                                  </div>
+                                  <div class="add-block">
+                                    Add another card
+                                  </div>
                                 </div>`
 
       this.widget.appendChild(blockTaskList);
+
       const title = blockTaskList.querySelector('.title-task-list');
       title.textContent = i.title;
       const list = blockTaskList.querySelector('.list-block')
@@ -41,7 +57,6 @@ export default class DrawWidget {
       const li = document.createElement('li');
       li.classList.add('task-item')
       li.innerHTML = `<div class="item-content"></div>`;
-      li.dataset.id = i.id;
       const itemContent = li.querySelector('.item-content');
       this.drawImg(i.img, itemContent);
       this.drawText(i.text, itemContent);
@@ -92,6 +107,9 @@ export default class DrawWidget {
       icon.classList.add('icon', i.name);
       
       if (i.name === 'check') {
+        if (i.value.count === null) {
+          continue;
+        }
         icon.textContent = `${i.value.result}/${i.value.count}`;
       } else {
         icon.textContent = i.value;

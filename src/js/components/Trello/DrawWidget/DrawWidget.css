@@ -1,4 +1,3 @@
-
 .widget-task {
   background-color: #107abb;
   padding: 15px;
@@ -8,9 +7,8 @@
   left: 0;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
-
-/* стилизация блока задач */
 
 .block-task-list {
   background-color: #dee2e5;
@@ -38,6 +36,10 @@
   font-size: 36px;
   line-height: 0;
   color: #b4b3b3;
+}
+
+.list-block {
+  display: relative;
 }
 
 .task-item {
@@ -134,4 +136,61 @@
 
 .add-block::before {
   content: "\271A";
+}
+
+.block-add-item {
+  margin-top: 10px;
+}
+
+.textarea-add {
+  border: none;
+  border-bottom: 1px solid #b7c0c7;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  resize: none;
+}
+
+.textarea-add:focus-visible {
+  outline: none;
+}
+
+.textarea-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.button-submit {
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+  background-color: #5ca84d;
+  border-bottom: 1px solid #538a41;
+}
+
+.button-sibmit:hover {
+  background-color: #78ac6d;
+}
+
+.button-cancel {
+  margin-left: 20px;
+  color: #91989e;
+}
+
+.button-cancel::after {
+  content: "\2716";
+  display: inline-block;
+  font-size: 36px;
+}
+
+.button-cancel:hover {
+  margin-left: 20px;
+  color: #707579;
+}
+
+
+.disabled {
+  display: none;
 }
