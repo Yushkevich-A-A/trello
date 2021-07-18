@@ -20,6 +20,8 @@
         "no-unused-vars": "off",
         "no-console": "off",
         "no-plusplus": "off",
-        "no-new": "off"
+        "no-new": "off",
+        "class-methods-use-this": "off",
+        "no-continue": "off"
     }
 }

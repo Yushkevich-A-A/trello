@@ -2,7 +2,7 @@ import './DrawWidget/DrawWidget.css';
 import './ControllerWidget/ControllerWidget.css';
 
 import ControllerWidget from './ControllerWidget/ControllerWidget';
-import DrawWidget from './DrawWidget/DrawWidget.js';
+import DrawWidget from './DrawWidget/DrawWidget';
 import data from './data/data';
 
 const widget = new DrawWidget();

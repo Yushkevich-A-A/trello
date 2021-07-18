@@ -1,6 +1,6 @@
 export default class DrawWidget {
   constructor() {
-    this.init()
+    this.init();
   }
 
   init() {
@@ -16,7 +16,7 @@ export default class DrawWidget {
   }
 
   darwLists() {
-    for (let i of this.data) {
+    for (const i of this.data) {
       const blockTaskList = document.createElement('div');
       blockTaskList.classList.add('block-task-list');
       blockTaskList.innerHTML = `<div>
@@ -40,28 +40,27 @@ export default class DrawWidget {
                                   <div class="add-block">
                                     Add another card
                                   </div>
-                                </div>`
+                                </div>`;
 
       this.widget.appendChild(blockTaskList);
 
       const title = blockTaskList.querySelector('.title-task-list');
       title.textContent = i.title;
-      const list = blockTaskList.querySelector('.list-block')
+      const list = blockTaskList.querySelector('.list-block');
       this.drawContent(i.data, list);
     }
-
   }
 
   drawContent(data, element) {
-    for (let i of data) {
+    for (const i of data) {
       const li = document.createElement('li');
-      li.classList.add('task-item')
-      li.innerHTML = `<div class="item-content"></div>`;
+      li.classList.add('task-item');
+      li.innerHTML = '<div class="item-content"></div>';
       const itemContent = li.querySelector('.item-content');
       this.drawImg(i.img, itemContent);
       this.drawText(i.text, itemContent);
       this.drawIcons(i.icons, itemContent);
-      li.insertAdjacentHTML('beforeend', '<div class="delete-item"></div>')
+      li.insertAdjacentHTML('beforeend', '<div class="delete-item"></div>');
       element.appendChild(li);
     }
   }
@@ -74,7 +73,7 @@ export default class DrawWidget {
     contentBlock.classList.add('content-block', 'img-block');
     const img = document.createElement('img');
     img.classList.add('img');
-    img.src = dataImg.src; 
+    img.src = dataImg.src;
     img.alt = dataImg.alt || 'контент';
     contentBlock.appendChild(img);
     element.appendChild(contentBlock);
@@ -88,7 +87,7 @@ export default class DrawWidget {
     contentBlock.classList.add('content-block', 'text-block');
     const p = document.createElement('p');
     p.classList.add('p');
-    p.textContent = dataText; 
+    p.textContent = dataText;
     contentBlock.appendChild(p);
     element.appendChild(contentBlock);
   }
@@ -99,13 +98,13 @@ export default class DrawWidget {
     }
     const contentBlock = document.createElement('div');
     contentBlock.classList.add('content-block', 'icons');
-    for (let i of dataIcons) {
+    for (const i of dataIcons) {
       if (i.value === null) {
         continue;
       }
-      const icon = document.createElement('div')
+      const icon = document.createElement('div');
       icon.classList.add('icon', i.name);
-      
+
       if (i.name === 'check') {
         if (i.value.count === null) {
           continue;
