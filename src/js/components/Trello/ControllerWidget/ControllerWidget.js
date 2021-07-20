@@ -90,19 +90,7 @@ export default class ControllerWidget {
         return;
       }
 
-      let closest = null;
-      if (document.elementFromPoint(event.clientX, event.clientY)) {
-        closest = document.elementFromPoint(event.clientX, event.clientY).closest('.task-item');
-        if (!closest) {
-          closest = document.elementFromPoint(event.clientX, event.clientY - 10).closest('.task-item');
-        }
-        if (!closest) {
-          closest = document.elementFromPoint(event.clientX, event.clientY + 10).closest('.task-item');
-        }
-        if (!closest) {
-          closest = document.elementFromPoint(event.clientX, event.clientY - 10).closest('.task-item');
-        }
-      }
+      const closest = this.getNearestElement(event);
 
       if (closest) {
         const { top, height } = closest.getBoundingClientRect();
@@ -132,6 +120,25 @@ export default class ControllerWidget {
       this.currentObject = null;
       this.updateLocalStorage();
     });
+  }
+
+  getNearestElement(event) {
+    let temporaryValue = null;
+    if (!document.elementFromPoint(event.clientX, event.clientY)) {
+      return null;
+    }
+
+    temporaryValue = document.elementFromPoint(event.clientX, event.clientY).closest('.task-item');
+    if (!temporaryValue) {
+      temporaryValue = document.elementFromPoint(event.clientX, event.clientY - 10).closest('.task-item');
+    }
+    if (!temporaryValue) {
+      temporaryValue = document.elementFromPoint(event.clientX, event.clientY + 10).closest('.task-item');
+    }
+    if (!temporaryValue) {
+      temporaryValue = document.elementFromPoint(event.clientX, event.clientY - 10).closest('.task-item');
+    }
+    return temporaryValue || null;
   }
 
   updateLocalStorage() {
